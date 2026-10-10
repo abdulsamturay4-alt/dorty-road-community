@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dorty Road Community</title>
+<style>
+:root{--blue:#245b78;--blue2:#173d53;--paper:#f4f6f7;--ink:#17242d;--muted:#62717a;--line:#d8e0e4;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink)}
+header{display:flex;align-items:center;gap:13px;padding:14px 5%;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:2}
+header img{width:52px;height:52px;object-fit:contain;border-radius:50%}.brand{font-size:clamp(16px,2.7vw,23px);font-weight:800;letter-spacing:.2px}.tag{font-size:11px;color:var(--blue);letter-spacing:2px;margin-top:5px}
+nav{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}nav a{color:#324650;text-decoration:none;font-size:13px}
+.hero{padding:55px 6%;background:linear-gradient(120deg,#e5edf1 0%,#f8fafb 60%,#d5e3e9 100%);display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:30px}
+.eyebrow{color:var(--blue);letter-spacing:2px;font-size:12px;font-weight:bold}.hero h1{font-size:clamp(34px,6vw,65px);line-height:1.03;margin:14px 0;color:#1c3442}.hero h1 span{color:var(--blue)}.hero p{color:#52636c;max-width:580px;line-height:1.7}
+.hero-logo{width:min(100%,270px);justify-self:center;border-radius:50%;box-shadow:0 10px 35px #183c5015}
+.btn{display:inline-block;background:var(--blue);color:white;border:0;padding:12px 17px;border-radius:5px;font-weight:700;text-decoration:none;cursor:pointer;margin:6px 8px 0 0}.btn.secondary{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+section{padding:34px 6%}.section-title{font-size:26px;margin:0 0 8px;color:#1c3442}.sub{color:var(--muted);margin:0 0 22px;line-height:1.55}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:21px;box-shadow:0 3px 12px #17242d08}.card h3{margin:0 0 10px;color:var(--blue)}.card p{color:#596a73;line-height:1.6;font-size:14px}
+form{display:grid;gap:12px}input,textarea,select{width:100%;padding:12px;border-radius:5px;border:1px solid #cbd6dc;background:#fff;color:#17242d;font:inherit}textarea{min-height:100px;resize:vertical}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line)}th{color:var(--blue)}.table-wrap{overflow:auto}
+footer{background:#173d53;color:#e7eef2;padding:22px 6%;font-size:13px}
+.hidden{display:none!important}.notice{color:#246a49;font-size:13px;min-height:18px}
+.modal{position:fixed;inset:0;background:rgba(13,29,38,.96);display:flex;align-items:center;justify-content:center;z-index:10;padding:20px;animation:fade .45s ease}.modal-box{text-align:center;max-width:420px;width:100%;padding:30px 25px;background:#fff;border-radius:12px;box-shadow:0 15px 55px #0003}.modal-box img{width:min(70%,230px);display:block;margin:0 auto 18px;border-radius:50%}.modal-box h2{margin:10px 0;color:#1c3442;font-size:22px}.modal-box p{color:#52636c;letter-spacing:2px;font-size:12px}.modal-box .btn{margin-top:12px}@keyframes fade{from{opacity:0}to{opacity:1}}
+.small{font-size:12px;color:#62717a;line-height:1.5}.badge{display:inline-block;background:#e8f0f4;color:#245b78;border-radius:4px;padding:5px 8px;font-size:12px;font-weight:bold}
+@media(max-width:750px){.hero{grid-template-columns:1fr;text-align:center;padding-top:36px}.hero-logo{width:180px;grid-row:1}.hero p{margin-left:auto;margin-right:auto}.grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}nav{display:none}}
+@media print{header,nav,.hero,.no-print,footer{display:none!important}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="modal" id="splash" role="dialog" aria-label="Dorty Road Community welcome">
+  <div class="modal-box"><img src="drc-logo.jpeg" alt="Dorty Road Community official badge"><h2>DORTY ROAD COMMUNITY</h2><p>UNITY · PRIDE · PASSION</p><button class="btn" onclick="closeSplash()">Enter Community</button></div>
+</div>
+<header><img src="drc-logo.jpeg" alt="DRC badge"><div><div class="brand">Dorty Road Community</div><div class="tag">UNITY · PRIDE · PASSION</div></div><nav><a href="#about">About</a><a href="#member">Join</a><a href="#voice">Community Voice</a><a href="#login">Sign In</a><a href="#admin">Administration</a></nav></header>
+<main>
+<div class="hero"><div><div class="eyebrow">CONNECTED BY COMMUNITY</div><h1>Unity, <span>Pride,</span><br>Passion.</h1><p>A place for the people of Dorty Road to connect, celebrate one another, and work together for community development.</p><a class="btn" href="#member">Become a Member</a><a class="btn secondary" href="#voice">Share a Suggestion</a></div><img class="hero-logo" src="drc-logo.jpeg" alt="Dorty Road Community badge"></div>
+<section id="about"><h2 class="section-title">Our Community</h2><p class="sub">Connected by where we come from and what we can build together.</p><div class="grid"><div class="card"><h3>Community First</h3><p>Bring people together around shared priorities, local initiatives, and positive action.</p></div><div class="card"><h3>Admirer of the Month</h3><p id="admirerText">A monthly space to recognise a community member and their positive contribution.</p><div id="admirerAdmin" class="hidden no-print"><input id="admName" placeholder="Member name"><input id="admMsg" placeholder="Appreciation message"><button class="btn" onclick="saveAdmirer()">Save</button></div></div><div class="card"><h3>Ideas into Action</h3><p>Share constructive ideas and help shape local development through Community Voice.</p><a class="btn secondary" href="#voice">Have Your Say</a></div></div></section>
+<section id="member"><h2 class="section-title">Membership Registration</h2><p class="sub">Create your account with your email address. After sign-in, the system assigns your community membership code.</p><div class="card"><form id="memberForm"><div class="form-grid"><input name="fullName" placeholder="Full name *" required maxlength="120"><input name="phone" placeholder="Phone number *" required maxlength="40"><input name="email" placeholder="Email address *" type="email" required autocomplete="email"><input name="area" placeholder="Street / area (optional)" maxlength="120"><input name="occupation" placeholder="Occupation (optional)" maxlength="120"><select name="memberType"><option value="Member">Member</option><option value="Volunteer">Volunteer</option><option value="Youth member">Youth member</option></select><input name="password" type="password" placeholder="Create password *" required minlength="8" autocomplete="new-password"></div><p class="small">Use a password of at least 8 characters. Keep it private. If email confirmation is enabled, confirm your email before signing in.</p><button class="btn" type="submit">Create Account</button><div class="notice" id="memberNotice" aria-live="polite"></div><div id="newCode" class="badge hidden"></div></form></div></section>
+<section id="login"><h2 class="section-title">Member Sign In</h2><p class="sub">Sign in securely with the email address and password for your account.</p><div class="card"><form id="loginForm"><input id="loginEmail" type="email" placeholder="Email address" required autocomplete="email"><input id="loginPassword" type="password" placeholder="Password" required autocomplete="current-password"><button class="btn" type="submit">Sign In</button><button class="btn secondary" type="button" id="resetPasswordBtn">Forgot password?</button><div class="notice" id="loginNotice" aria-live="polite"></div></form><div id="memberArea" class="hidden"><h3 id="memberWelcome"></h3><p id="memberCodeDisplay" class="badge"></p><p class="small">Your account is signed in securely.</p><button class="btn secondary" type="button" id="logoutBtn">Sign Out</button></div></div></section>
+<section id="voice"><h2 class="section-title">Community Voice</h2><p class="sub">Sign in to share a suggestion that could contribute to the development of Dorty Road.</p><div class="card"><form id="voiceForm"><input name="topic" placeholder="Suggestion topic *" required maxlength="160"><textarea name="suggestion" placeholder="Describe your suggestion *" required maxlength="5000"></textarea><button class="btn" type="submit">Send Suggestion</button><div class="notice" id="voiceNotice" aria-live="polite"></div></form></div></section>
+<section id="admin"><h2 class="section-title">Community Administration</h2><p class="sub">Administrator access is checked by Supabase on the server. Only approved administrators can manage member records and trusted administrators.</p><div class="card"><div id="adminGate"><p class="small">Sign in with an administrator account above to open this dashboard.</p><button class="btn" type="button" id="refreshAdminBtn">Check Administrator Access</button><div class="notice" id="adminNotice" aria-live="polite"></div></div><div id="dashboard" class="hidden"><div class="no-print"><button class="btn" id="exportCsvBtn" type="button">Export CSV</button><button class="btn secondary" onclick="window.print()" type="button">Print / Save PDF</button></div><h3>Member Records</h3><div class="table-wrap"><table id="membersTable"><thead><tr><th>Code</th><th>Name</th><th>Phone</th><th>Email</th><th>Area</th><th>Occupation</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead><tbody></tbody></table></div><h3>Trusted Administrators</h3><p class="small">Enter the email of an existing registered account to grant or remove administrator access.</p><form id="adminRoleForm" class="no-print"><input id="adminTargetEmail" type="email" placeholder="Existing account email" required><select id="adminTargetRole"><option value="admin">Make administrator</option><option value="member">Remove administrator access</option></select><button class="btn" type="submit">Update Access</button><div class="notice" id="adminRoleNotice" aria-live="polite"></div></form><div class="table-wrap"><table id="adminsTable"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Created</th></tr></thead><tbody></tbody></table></div><h3>Community Suggestions</h3><div id="suggestions"></div><h3>Admirer of the Month</h3><form id="admirerForm" class="no-print"><input id="admName" placeholder="Member name" maxlength="120" required><textarea id="admMsg" placeholder="Appreciation message" maxlength="2000" required></textarea><button class="btn" type="submit">Save Feature</button><div class="notice" id="admirerNotice" aria-live="polite"></div></form></div></div></div></section>
+</main><footer>© <span id="year"></span> Dorty Road Community · Unity, Pride, Passion.</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// Supabase project settings. The publishable/anon key is intended for browser use;
+// database access is protected by Row Level Security. NEVER put a service_role key here.
+const SUPABASE_URL = 'https://ohteeinzfhahxmibllbp.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_bpguDA_S9Y53SeNhd_k-cw_RxXkWcHk';
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+let currentUser = null;
+let currentProfile = null;
+let cachedMembers = [];
+function closeSplash(){document.getElementById('splash').classList.add('hidden')}
+document.getElementById('year').textContent=new Date().getFullYear();
+const byId=id=>document.getElementById(id);
+function notice(id,msg,isError=false){const el=byId(id);if(el){el.textContent=msg;el.style.color=isError?'#a12626':'#246a49'}}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fmtDate(s){if(!s)return '';const d=new Date(s);return Number.isNaN(d.getTime())?'':d.toLocaleDateString()}
+async function loadSession(){
+  const {data,error}=await db.auth.getSession();
+  if(error){console.error(error);return}
+  currentUser=data.session?.user||null;
+  if(currentUser){await loadProfile();await finishPendingMemberRegistration();updateSignedInUI();}
+  else {currentProfile=null;updateSignedInUI()}
+}
+async function loadProfile(){
+  if(!currentUser){currentProfile=null;return}
+  const {data,error}=await db.from('profiles').select('id,email,display_name,role,created_at').eq('id',currentUser.id).maybeSingle();
+  if(error){console.error(error);currentProfile=null;return}
+  currentProfile=data;
+}
+function updateSignedInUI(){
+  const signed=!!currentUser;
+  byId('memberForm').classList.toggle('hidden',signed);
+  byId('memberArea').classList.toggle('hidden',!signed);
+  if(signed){byId('memberWelcome').textContent='Welcome, '+(currentProfile?.display_name||currentUser.email||'community member');byId('memberCodeDisplay').textContent='Loading membership code…';loadOwnMemberCode();}
+  else {byId('memberForm').classList.remove('hidden');byId('memberWelcome').textContent='';byId('memberCodeDisplay').textContent='';}
+  byId('adminGate').classList.toggle('hidden',!!(currentProfile&&currentProfile.role==='admin'));
+  if(!(currentProfile&&currentProfile.role==='admin'))byId('dashboard').classList.add('hidden');
+}
+async function loadOwnMemberCode(){
+  if(!currentUser)return;
+  const {data,error}=await db.from('community_members').select('member_code,status').eq('user_id',currentUser.id).maybeSingle();
+  if(error){byId('memberCodeDisplay').textContent='Membership record not available yet';console.error(error);return}
+  byId('memberCodeDisplay').textContent=data?.member_code?('Membership code: '+data.member_code+' · '+data.status):'No membership record yet. Complete registration while signed out, or contact an administrator.';
+}
+byId('memberForm').addEventListener('submit',async e=>{
+ e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
+ const email=String(f.email||'').trim().toLowerCase();const password=String(f.password||'');
+ if(password.length<8){notice('memberNotice','Use a password of at least 8 characters.',true);return}
+ notice('memberNotice','Creating your account…');
+ const {data,error}=await db.auth.signUp({email,password,options:{data:{display_name:String(f.fullName).trim()}}});
+ if(error){notice('memberNotice',error.message,true);return}
+ const draft={full_name:String(f.fullName).trim(),phone:String(f.phone).trim(),area:String(f.area||'').trim(),occupation:String(f.occupation||'').trim(),member_type:String(f.memberType||'Member')};
+ // Save only the non-password membership form temporarily so email-confirmation flows can finish after sign-in.
+ try{localStorage.setItem('drc_pending_member_'+email,JSON.stringify(draft))}catch(_e){}
+ if(data.session){currentUser=data.user;await loadProfile();const ok=await finishPendingMemberRegistration();updateSignedInUI();notice('memberNotice',ok?'Account created. Your membership request has been recorded.':'Account created, but your membership record could not be saved yet. Sign in and retry.');}
+ else {e.target.reset();notice('memberNotice','Account created. Check your email for a confirmation link, then sign in. Your membership details are saved on this device until registration finishes.');}
+});
+async function finishPendingMemberRegistration(){
+ if(!currentUser?.email)return false;
+ let draft;try{draft=JSON.parse(localStorage.getItem('drc_pending_member_'+currentUser.email.toLowerCase())||'null')}catch(_e){draft=null}
+ if(!draft)return true;
+ const {data,error}=await db.rpc('create_member_record',{p_full_name:draft.full_name,p_phone:draft.phone,p_area:draft.area,p_occupation:draft.occupation,p_member_type:draft.member_type});
+ if(error){console.error(error);return false}
+ try{localStorage.removeItem('drc_pending_member_'+currentUser.email.toLowerCase())}catch(_e){}
+ if(data?.member_code){byId('newCode').textContent='Your membership code: '+data.member_code;byId('newCode').classList.remove('hidden')}
+ return true;
+}
+byId('loginForm').addEventListener('submit',async e=>{
+ e.preventDefault();notice('loginNotice','Signing in…');
+ const email=byId('loginEmail').value.trim().toLowerCase(),password=byId('loginPassword').value;
+ const {data,error}=await db.auth.signInWithPassword({email,password});
+ if(error){notice('loginNotice',error.message,true);return}
+ currentUser=data.user;await loadProfile();const completed=await finishPendingMemberRegistration();updateSignedInUI();e.target.reset();notice('loginNotice',completed?'Signed in successfully.':'Signed in, but membership registration needs another try.',!completed);
+ if(currentProfile?.role==='admin'){await openAdminDashboard()}
+});
+byId('resetPasswordBtn').addEventListener('click',async()=>{
+ const email=byId('loginEmail').value.trim().toLowerCase();if(!email){notice('loginNotice','Enter your email address first, then click Forgot password.',true);return}
+ const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo:window.location.href.split('#')[0]});
+ notice('loginNotice',error?error.message:'If an account exists for that email, a password-reset link will be sent.',!!error);
+});
+async function logout(){await db.auth.signOut();currentUser=null;currentProfile=null;byId('dashboard').classList.add('hidden');byId('adminGate').classList.remove('hidden');updateSignedInUI();notice('loginNotice','You have signed out.')}
+byId('logoutBtn').addEventListener('click',logout);
+byId('voiceForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(!currentUser){notice('voiceNotice','Please sign in before sending a suggestion.',true);return}
+ const f=Object.fromEntries(new FormData(e.target));notice('voiceNotice','Sending suggestion…');
+ const {error}=await db.from('community_suggestions').insert({user_id:currentUser.id,topic:String(f.topic).trim(),suggestion:String(f.suggestion).trim()});
+ if(error){notice('voiceNotice',error.message,true);return}e.target.reset();notice('voiceNotice','Thank you. Your suggestion has been recorded.');
+});
+byId('refreshAdminBtn').addEventListener('click',async()=>{await loadProfile();if(currentProfile?.role!=='admin'){notice('adminNotice','This account does not have administrator access.',true);return}await openAdminDashboard()});
+async function openAdminDashboard(){
+ if(!currentUser){notice('adminNotice','Please sign in first.',true);return}
+ await loadProfile();if(currentProfile?.role!=='admin'){notice('adminNotice','Access denied. This account is not an administrator.',true);return}
+ byId('dashboard').classList.remove('hidden');byId('adminGate').classList.add('hidden');notice('adminNotice','Administrator access verified.');await renderAdmin();
+}
+async function renderAdmin(){
+ if(currentProfile?.role!=='admin')return;
+ const [m,sug,profiles,setting]=await Promise.all([
+  db.from('community_members').select('id,user_id,member_code,full_name,phone,email,area,occupation,member_type,status,created_at').order('created_at',{ascending:false}),
+  db.from('community_suggestions').select('id,topic,suggestion,created_at,user_id').order('created_at',{ascending:false}),
+  db.from('profiles').select('id,email,display_name,role,created_at').order('created_at',{ascending:true}),
+  db.from('community_settings').select('value').eq('key','admirer_of_month').maybeSingle()
+ ]);
+ for(const x of [m,sug,profiles,setting])if(x.error){console.error(x.error);notice('adminNotice','Could not load dashboard data: '+x.error.message,true);return}
+ cachedMembers=m.data||[];
+ byId('membersTable').querySelector('tbody').innerHTML=cachedMembers.map(x=>`<tr><td>${esc(x.member_code)}</td><td>${esc(x.full_name)}</td><td>${esc(x.phone)}</td><td>${esc(x.email)}</td><td>${esc(x.area)}</td><td>${esc(x.occupation)}</td><td>${esc(x.member_type)}</td><td>${esc(x.status)}</td><td>${x.status==='pending'?`<button class="btn" type="button" data-member-action="approved" data-member-id="${esc(x.id)}">Approve</button> <button class="btn secondary" type="button" data-member-action="rejected" data-member-id="${esc(x.id)}">Reject</button>`:`<button class="btn secondary" type="button" data-member-action="pending" data-member-id="${esc(x.id)}">Set pending</button>`}</td></tr>`).join('')||'<tr><td colspan="9">No membership records yet.</td></tr>';
+ byId('adminsTable').querySelector('tbody').innerHTML=(profiles.data||[]).map(x=>`<tr><td>${esc(x.display_name)}</td><td>${esc(x.email)}</td><td>${esc(x.role)}</td><td>${esc(fmtDate(x.created_at))}</td></tr>`).join('')||'<tr><td colspan="4">No accounts found.</td></tr>';
+ byId('suggestions').innerHTML=(sug.data||[]).map(x=>`<div class="card"><b>${esc(x.topic)}</b><p>${esc(x.suggestion)}</p><small>${esc(fmtDate(x.created_at))}</small></div>`).join('')||'<p class="small">No suggestions submitted yet.</p>';
+ if(setting.data?.value){let v=setting.data.value;try{v=JSON.parse(v)}catch(_e){};if(typeof v==='object'&&v){byId('admirerText').textContent=(v.name||'')+(v.message?' — '+v.message:'')}}
+}
+byId('membersTable').addEventListener('click',async e=>{
+ const b=e.target.closest('button[data-member-action]');if(!b||currentProfile?.role!=='admin')return;
+ b.disabled=true;const {error}=await db.from('community_members').update({status:b.dataset.memberAction}).eq('id',b.dataset.memberId);
+ if(error)notice('adminNotice',error.message,true);else await renderAdmin();b.disabled=false;
+});
+byId('adminRoleForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(currentProfile?.role!=='admin'){notice('adminRoleNotice','Administrator access required.',true);return}
+ notice('adminRoleNotice','Updating account access…');const {data,error}=await db.rpc('admin_set_role',{p_email:byId('adminTargetEmail').value.trim().toLowerCase(),p_role:byId('adminTargetRole').value});
+ if(error){notice('adminRoleNotice',error.message,true);return}notice('adminRoleNotice',data?.message||'Account role updated.');await renderAdmin();
+});
+byId('admirerForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(currentProfile?.role!=='admin'){notice('admirerNotice','Administrator access required.',true);return}
+ const value=JSON.stringify({name:byId('admName').value.trim(),message:byId('admMsg').value.trim()});const {error}=await db.from('community_settings').upsert({key:'admirer_of_month',value,updated_by:currentUser.id,updated_at:new Date().toISOString()},{onConflict:'key'});
+ if(error){notice('admirerNotice',error.message,true);return}byId('admirerText').textContent=byId('admName').value.trim()+' — '+byId('admMsg').value.trim();notice('admirerNotice','Admirer of the Month updated.');
+});
+byId('exportCsvBtn').addEventListener('click',()=>{const headers=['Code','Name','Phone','Email','Area','Occupation','Type','Status'];const rows=[headers,...cachedMembers.map(x=>[x.member_code,x.full_name,x.phone,x.email,x.area,x.occupation,x.member_type,x.status])];const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='dorty-road-members.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+db.auth.onAuthStateChange((_event,session)=>{setTimeout(async()=>{currentUser=session?.user||null;if(currentUser){await loadProfile();await finishPendingMemberRegistration()}else currentProfile=null;updateSignedInUI()},0)});
+(async()=>{await loadSession();try{const {data,error}=await db.from('community_settings').select('value').eq('key','admirer_of_month').maybeSingle();if(!error&&data?.value){let v=data.value;try{v=JSON.parse(v)}catch(_e){};if(v&&typeof v==='object'&&v.name)byId('admirerText').textContent=v.name+(v.message?' — '+v.message:'')}}catch(e){console.error(e)}})();
+</script>
+</body></html>
